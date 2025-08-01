@@ -1,0 +1,36 @@
+﻿@model Employee
+
+<div class="container">
+    <div class="card">
+        <form asp-action="Edit" asp-controller="Employee" method="post">
+
+            <div class="form-group" style="display:none">
+                <label> Enter Employee Id </label>
+                <input class="form-control" type="text" name="Id" asp-for="Id" required />
+
+            </div>
+            <div class="form-group">
+
+                <label> Enter Employee Email: </label>
+                <input class="form-control" type="text" name="Email" asp-for="Email" required />
+            </div>
+
+            <div class="form-group">
+                <label> Select Your role</label>
+                <select name="Role" asp-for="Role">
+                    <option value="value">select ...</option>
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                    <option value="Editer">Editer</option>
+                </select>
+
+            </div>
+
+            <div class="my-3">
+                <button type="submit" >
+                    submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

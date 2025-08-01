@@ -1,0 +1,98 @@
+﻿@model IEnumerable<User>
+
+<div class="container">
+  
+    @if (Model == null || !Model.Any())
+    {
+        @ViewBag.Message
+    }
+    else
+    {
+        <div class="my-4">
+            <h1> Login successful @ViewBag.Username</h1>
+
+        </div>
+
+        <div class=" container">
+            <div class="active">
+                <h1> Employee List </h1>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th> Id</th>
+                        <th> Email</th>
+                        <th>Role </th>
+                        <th colspan="2" class="text-center"> Actions</th>
+                    </tr>
+                <thead>
+                </thead>
+                <tbody>
+                    @foreach (var i in Model)
+                    {
+                        <tr>
+                            <td>@i.Id</td>
+                            <td>@i.Email</td>
+                            <td>@i.Password</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+    }
+
+
+
+</div> 
+
+
+@* 
+
+<style>
+
+    .main{
+        display:flex;
+        justify-content:center;
+        align-content:center;
+        height:100%;
+    }
+    .card{
+     
+        width:400px;
+        height: 300px;
+    }
+    from{
+        margin: 50% 0px;
+    }
+
+   
+
+</style>
+
+<div class="container">
+    <div class="main">
+        <div class="card">
+            <form asp-action="Login" asp-controller="auth" method="post"  style=" margin-top:50px">
+                <div class="d-flex justify-content-center align-content-center my-2">
+                    <div class="form-group">
+                        <label> Enter Username: </label>
+                        <input type="text" class="form-control" name="Username" aps-for="Username" />
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-content-center my-2">
+                <div class="form-group">
+                    <label> Enter Password: </label>
+                        <input type="text" class="form-control" name="Password" aps-for="Password" />
+                </div>
+                </div>
+                <div class="d-flex justify-content-center align-content-center">
+                    <button type="submit" class="my-3 btn btn-primary"> Login </button>
+                </div>
+
+                <p> <a asp-action="Registration" asp-controller="Auth">Registration</a>   </p>
+            </form>
+        </div>
+    </div>
+</div> *@

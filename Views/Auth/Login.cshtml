@@ -1,0 +1,51 @@
+﻿@model UserViewModel
+<style>
+
+    .main {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        height: 100%;
+    }
+
+    .card {
+        width: 600px;
+        height: 400px;
+    }
+
+    from {
+        margin: 50% 0px;
+    }
+
+</style>
+
+<div class="container">
+    <div class="main">
+        <div class="card">
+            <form asp-action="Login" asp-controller="auth" method="post" style=" margin-top:50px">
+                <div class="d-flex justify-content-center align-content-center my-2">
+                    <div class="form-group">
+                        <label> Enter Username: </label>
+                        <input type="text" class="form-control" name="Username" aps-for="Username" />
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-content-center my-2">
+                    <div class="form-group">
+                        <label> Enter Password: </label>
+                        <input type="text" class="form-control" name="Password" aps-for="Password" />
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center align-content-center">
+                    <button type="submit" class="my-3 btn btn-primary"> Login </button>
+                </div>
+              <div class="ms-3">
+                    @if (Model == null)
+                    {
+                        @ViewBag.Message
+                    }
+                    <p> <a asp-action="Registration" asp-controller="Auth">Registration</a>   </p>
+              </div>
+            </form>
+        </div>
+    </div>
+</div>
