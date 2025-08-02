@@ -1,30 +1,116 @@
 ﻿@model User
-<div class="container">
-    <div class="main">
+
+
+
+
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+    }
+
+    .card {
+        background-color: white;
+        width: 400px;
+        height: 420px;
+        scroll-behavior: auto;
+    }
+
+        .card h1 {
+            text-align: center;
+            padding-top: 30px;
+            font-size: 24px;
+            color: #333;
+        }
+
+    .container-sub {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75vh;
+    }
+
+    .form-group {
+        position: relative;
+        margin: 40px 30px;
+    }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group .input-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-60%);
+            font-size: 20px;
+            color: #888;
+        }
+
+    .btn-submit {
+        display: flex;
+        /* position: absolute;
+            top: 50%;
+            bottom: 10px;
+            left:-50%; */
+    }
+
+        .btn-submit button {
+            /* position: absolute; */
+            width: 80%;
+            padding: 10px;
+            margin: 10px 40px;
+            background-color: #d62828;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+</style>
+
+
+<div class="main-container">
+    <div class="container-sub">
         <div class="card">
-            <form asp-action="Registration" asp-controller="auth" method="post" style=" margin-top:50px">
-                <div class="d-flex justify-content-center align-content-center my-2">
+            <h1> Registration </h1>
+            <div class="form-container card">
+                <form asp-action="Registration" asp-controller="auth" method="post" method="post">
+
                     <div class="form-group">
-                        <label> Enter Username: </label>
-                        <input type="text" class="form-control" name="Username" aps-for="Username" />
+                        <input type="password" placeholder="Email" name="Email" aps-for="Email" required>
+                        <span class="input-icon"> 📩  </span>
                     </div>
-                </div>
-                <div class="d-flex justify-content-center align-content-center my-2">
                     <div class="form-group">
-                        <label> Enter Email: </label>
-                        <input type="text" class="form-control" name="Email" aps-for="Email" />
+                        <input type="text" placeholder="Username" class="form-control" name="Username" aps-for="Username" required>
+                        <span class="input-icon">👤</span>
                     </div>
-                </div>
-                <div class="d-flex justify-content-center align-content-center my-2">
                     <div class="form-group">
-                        <label> Enter Password: </label>
-                        <input type="text" class="form-control" name="Password" aps-for="Password" />
+                        <input type="password" placeholder=" password" name="Password" aps-for="Password" required>
+                        <span class="input-icon"> 🔑</span>
                     </div>
-                </div>
-                <div class="d-flex justify-content-center align-content-center">
-                    <button type="submit" class="my-3 btn btn-primary"> Login </button>
-                </div>
-            </form>
+                    <div class=" btn-submit">
+                        <button type="submit">Submit</button>
+                    </div>
+                    <div class="ms-3">
+                        <p class="text-center"> <a asp-action="Login" asp-controller="Auth">Login</a>   </p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+

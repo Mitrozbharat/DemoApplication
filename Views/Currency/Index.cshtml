@@ -1,0 +1,83 @@
+﻿@model DemoApplication.Models.UserWallet
+<h2 class="text-center">Simple Currency Wallet</h2>
+
+@if (TempData["Message"] != null)
+{
+    <p style="color:green; text-align:center">@TempData["Message"]</p>
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <table border="1" class="table table-bordered">
+                <tr><th>Currency</th><th>Balance</th></tr>
+                <tr><td>USD</td><td>@Model.USD</td></tr>
+                <tr><td>INR</td><td>@Model.INR</td></tr>
+                <tr><td>EUR</td><td>@Model.EUR</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+
+
+            <h3>Buy Currency</h3>
+
+            <form method="post" asp-action="BuyCurrency" asp-controller="Currency">
+
+                <p>
+                    From:
+                    <select name ="from"  class="form-control" required>
+                        <option value=""> Select Currency </option>
+                        <option value="INR">INR</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                </select>
+                    @* <input name="from" class=" form-control" placeholder="e.g. INR" /> *@
+                </p>
+                <p>
+                    To:
+                    <select name="to" class="form-control"  required >
+                        <option value="">Select Currency</option>
+                        <option value="INR">INR</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                    @* <input name="to" class="form-control" placeholder="e.g. USD" /> *@
+                </p>
+                <p>
+                    Amount:
+                    <input name="amount" type="number" step="0.01" />
+                </p>
+                <button type="submit" class="btn btn-success w-100">Buy</button>
+            </form>
+
+         </div>
+        <div class="col-6">
+
+            <h3>Sell Currency</h3>
+
+            <form method="post" asp-action="SellCurrency" asp-controller="Currency" >
+                <p>
+                    Currency:
+                    <select name="currency" class="form-control" required>
+                        <option value="">Select Currency</option>
+                        <option value="INR">INR</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                    </select>
+                    @* <input name="currency" class="form-control" placeholder="e.g. EUR" /> *@
+                </p>
+                <p>
+                    Amount:
+                    <input name="amount" class="form-control" type="number" step="0.01" />
+                </p>
+                <button class="btn btn-danger w-100 mt-lg-4" style="margin-top:20px" type="submit">Sell</button>
+            </form>
+
+
+        </div>
+       </div>
+</div>
+

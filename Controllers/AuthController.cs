@@ -9,35 +9,12 @@ namespace DemoApplication.Controllers
         private static List<User> _users = new List<User>
         {
             new User{Id=1,Username="bharatharkal", Email="bharat@gmail.com",Password="1234"},
-             new User{Id=2,Username="Rohit", Email="rohit@gmail.com",Password="123456"}
+            new User{Id=2,Username="Rohit", Email="rohit@gmail.com",Password="123456"}
 
-        };    
-
-        public IActionResult Index()
-        {
-            return View(_users.ToList());
-        }
-        [HttpGet]
-        public IActionResult Registration()
-        {
-       
-            return View();
-        }
+        };
 
 
 
-        [HttpPost]
-        public IActionResult Registration(User model)
-        {
-            if (ModelState.IsValid)
-            {
-                _users.Max(x => x.Id + 1);
-                _users.Add(model);
-                return RedirectToAction("Login");
-
-            }
-            return View();
-        }
         [HttpGet]
         public IActionResult Login()
         {
@@ -63,5 +40,37 @@ namespace DemoApplication.Controllers
 
             return View();
         }
+
+
+        [HttpGet]
+        public IActionResult Registration()
+        {
+
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Registration(User model)
+        {
+            if (ModelState.IsValid)
+            {
+                _users.Max(x => x.Id + 1);
+                _users.Add(model);
+                return RedirectToAction("Login");
+
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(_users.ToList());
+        }
+       
+       
+        
     }
 }

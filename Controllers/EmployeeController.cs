@@ -57,11 +57,11 @@ namespace DemoApplication.Controllers
         {
             //Employee emp = new Employee();
 
-            var employee = employees.Where(x => x.Id ==model.Id).FirstOrDefault();
+            Employee employee = employees.Where(x => x.Id ==model.Id).FirstOrDefault();
 
             if (employee == null) {
 
-                NotFound();
+               return NotFound();
             }
             employee.Email = model.Email;
             employee.Role = model.Role; 
@@ -71,6 +71,24 @@ namespace DemoApplication.Controllers
 
         }
         public IActionResult Delete(int id)
+        {
+            //Employee emp = new Employee();
+
+            var employee = employees.Where(x => x.Id == id).FirstOrDefault();
+
+            if (employee == null)
+            {
+
+                NotFound();
+            }
+
+            return View(employee);
+
+
+        }
+        [ActionName("Delete")]
+        [HttpPost]
+        public IActionResult DeleteRecord(int id)
         {
             //Employee emp = new Employee();
 
